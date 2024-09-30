@@ -3,17 +3,16 @@ import os
 
 pasta = r"C:\Users\PC\Desktop\EFD CONTRIBUICOES MEDICALMAIS"
 
-dados = []
-arq_n_processados = []
 linhapis = '|M205|12|810908|'
 linhacofins = '|M605|12|217208|'
+
 
 def pis():
 
     arquivos = os.listdir(pasta)
 
-    valortotalpis = 0
-
+    
+    dadospis = []
     for arquivo in arquivos:
 
         caminho_arquivo = os.path.join(pasta, arquivo)
@@ -25,19 +24,18 @@ def pis():
                 if linhapis in linhavalorpis:
                     
                     linhavalorpis = linhavalorpis.split('|')
-                    valorpis = linhavalorpis[4]
-                    valorpis = float(valorpis.replace(',', '.'))                    
-                    valortotalpis += valorpis
+                    valorpis = linhavalorpis[4]                     
+                    print('Pis: ', valorpis)
                     
-    print(round(valortotalpis))                 
+            
                 
 
 def cofins():
 
     arquivos = os.listdir(pasta)
 
-    valortotalcofins = 0
-
+    
+    dadoscofins = []
     for arquivo in arquivos:
 
         caminho_arquivo = os.path.join(pasta, arquivo)
@@ -50,12 +48,11 @@ def cofins():
                     
                     linhavalorcofins = linhavalorcofins.split('|')
                     valorcofins = linhavalorcofins[4]
-                    valorcofins = float(valorcofins.replace(',', '.'))                    
-                    valortotalcofins += valorcofins
+                    print('cofins: ', valorcofins)
                     
-    print(valortotalcofins)
+pis()
+cofins()
+
+    
 
 
-
-pis() 
-cofins()   
